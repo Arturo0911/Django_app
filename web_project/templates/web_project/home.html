@@ -15,11 +15,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{% static 'web_project/css/style.css'%}" />
-    <title>Document</title>
+    <title>Shop</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Home</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -34,13 +34,13 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="services.html"
+          <li class="nav-item {% if request.path == '/services/' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'services' %}"
               >Services <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="shop.html">shop</a>
+          <li class="nav-item {% if request.path == '/shop/' %}active{% endif %}">
+            <a class="nav-link" href="{% url 'shop' %}">shop</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -55,8 +55,8 @@
               About
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="contact.html">contact</a>
-              <a class="dropdown-item" href="blog.html">Blog</a>
+              <a class="dropdown-item" href="{% url 'contact' %}">contact</a>
+              <a class="dropdown-item" href="{% url 'blog' %}">Blog</a>
             </div>
           </li>
         </ul>
