@@ -1,16 +1,22 @@
 from django.shortcuts import render, HttpResponse
+from servicios.models import Servicio
 # Create your views here.
 
 def Home(request):
 
     return render(request, 'web_project/home.html')
-def Services(request):
 
-    return render(request, 'web_project/services.html')
+
+
 
 def Shop(request):
 
+    
     return render(request, 'web_project/shop.html')
+
+def show(request):
+    message = "titulo: %r"%request.GET['title']
+    return HttpResponse(message)
 
 def Blog(request):
 
