@@ -1,27 +1,33 @@
-{% extends 'web_project/home.html' %}
+{% extends 'web_project/home.html' %} {% load static %} {% block content %}
 
-{% load static %}
-
-{% block content %}
-
-  {% for servicio in services %}
-
-    <div class="container p-4">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">{{servicio.titulo}}</h5>
-            </div>
-            <div class="card-body">
-              <img src="{{servicio.imagen.url}}" alt="">
-              <p>{{servicio.contenido}}</p>
-            </div>
-          </div>
+<div class="container p-4">
+  <div class="row">
+    {% if messagge %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Warning!</strong> {{message}}
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% for servicio in services %}
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">{{servicio.titulo}}</h5>
+        </div>
+        <div class="card-body">
+          <img class="img-thumbnail" src="{{servicio.imagen.url}}" alt="" />
+          <p>{{servicio.contenido}}</p>
         </div>
       </div>
     </div>
-
-  {% endfor %}
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}

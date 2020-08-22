@@ -17,13 +17,27 @@ def Shop(request):
 def show(request):
 
     #message = "titulo: %r"%request.POST['title']
-    title = request.POST['title']
-    imagen = request.FILES['imagen']
-    content = request.POST['description']
 
-    Data_saved = Servicio(titulo= title, contenido= content, imagen=imagen)
-    Data_saved.save()
-    return render(request, 'servicios/services.html')
+    if(request.POST['title'] and request.FILES['imagen'] and request.POST['description']):
+
+
+        title = request.POST['title']
+        imagen = request.FILES['imagen']
+        content = request.POST['description']
+
+        Data_saved = Servicio(titulo= title, contenido= content, imagen=imagen)
+        Data_saved.save()
+        messagge = "Datas was saved successfully"
+        return render(request, 'servicios/services.html',{'messagge':messagge} )
+    else:
+        message = "STOP!!! Data it's prohibided"
+        return render(request, 'web_project/shop.html', {'message':message})
+
+
+
+
+
+
 
 def Blog(request):
 
