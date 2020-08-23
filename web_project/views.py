@@ -28,7 +28,7 @@ def show(request):
         Data_saved = Servicio(titulo= title, contenido= content, imagen=imagen)
         Data_saved.save()
         messagge = "Datas was saved successfully"
-        return render(request,'web_project/home.html',{'messagge':messagge} )
+        return redirect('/services/')
     else:
         message = "STOP!!! Data it's prohibided"
         return render(request, 'web_project/shop.html', {'message':message})
