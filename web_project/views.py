@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,redirect
 from servicios.models import Servicio
 # Create your views here.
 
@@ -28,7 +28,7 @@ def show(request):
         Data_saved = Servicio(titulo= title, contenido= content, imagen=imagen)
         Data_saved.save()
         messagge = "Datas was saved successfully"
-        return render(request, 'servicios/services.html',{'messagge':messagge} )
+        return render(request,'web_project/home.html',{'messagge':messagge} )
     else:
         message = "STOP!!! Data it's prohibided"
         return render(request, 'web_project/shop.html', {'message':message})

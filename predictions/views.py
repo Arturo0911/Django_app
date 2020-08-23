@@ -1,23 +1,13 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,redirect
 import csv
+from .modules_calc import covarianza
 
 # Create your views here.
 
 def first_prediction(request):
 
-    lista_values = []
-    """
-    f = open("predictions/predicition.txt")
+    covariance_value = covarianza.covariance()
 
-    for i in f:
-        lista_values.append(i)
-    """
-    
-    with open('servicios/servicio.csv') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            lista_values.append(row)
-    
-    return HttpResponse(lista_values)
+    return render(request, 'predictions/prediction.html', {'covarianza':covariance_value})
     
     
