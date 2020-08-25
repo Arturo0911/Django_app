@@ -7,6 +7,10 @@ from servicios.models import Servicio
 def Services(request):
 
     services = Servicio.objects.all() # import all services already created
+    #print("services: ",services.titulo)
+
+    print(services)
+
     return render(request, 'servicios/services.html', {'services':services})
 
 
