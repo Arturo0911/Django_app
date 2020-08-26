@@ -37,5 +37,18 @@ $(document).ready(function(){
             }
         }
     });
+
+    //alert('holis')
+    $.ajax({
+        method:'GET' ,
+        url: 'http://127.0.0.1:8000/predictions/api/',
+        success: function(response){
+            console.log(response);
+        },
+        error: function(){
+            console.log('error while fetching data from Python');
+        }
+    });
+
     
 });
